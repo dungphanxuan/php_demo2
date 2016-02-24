@@ -46,9 +46,9 @@ class Lop extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'IDLop' => 'Idlop',
-            'TenLop' => 'Ten Lop',
-            'SoSinhVien' => 'So Sinh Vien',
+            'IDLop' => 'ID',
+            'TenLop' => 'Tên lớp',
+            'SoSinhVien' => 'Số sinh viên',
             'KhoaID' => 'Khoa ID',
             'HeDaoTaoID' => 'He Dao Tao ID',
             'BacDaoTaoID' => 'Bac Dao Tao ID',

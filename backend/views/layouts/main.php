@@ -28,18 +28,19 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'University',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Trang chủ', 'url' => ['/site/index']],
         ['label' => 'Niên luận', 'url' => ['/detai/index']],
         ['label' => 'Chủ đề', 'url' => ['/chude/index']],
         ['label' => 'Giảng viên', 'url' => ['/giangvien/index']],
         ['label' => 'Sinh viên', 'url' => ['/sinhvien/index']],
+        ['label' => 'Lớp học', 'url' => ['/lop/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
