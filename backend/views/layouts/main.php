@@ -41,6 +41,19 @@ AppAsset::register($this);
         ['label' => 'Giảng viên', 'url' => ['/giangvien/index']],
         ['label' => 'Sinh viên', 'url' => ['/sinhvien/index']],
         ['label' => 'Lớp học', 'url' => ['/lop/index']],
+        [
+            'label' => 'Quản lý',
+            'items'=>[
+                [
+                    'label' => 'Đăng ký niên luận',
+                    'url' => ['/dangky/index']
+                ],
+                [
+                    'label' => 'Nộp kết quả',
+                    'url' => ['/ketqua/index']
+                ]
+            ]
+        ],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];

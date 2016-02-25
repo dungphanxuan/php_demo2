@@ -35,9 +35,10 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => 'Trang chủ', 'url' => ['/site/index']],
+        ['label' => 'Niên luận', 'url' => ['/detai/index']],
+        ['label' => 'Về chúng tôi', 'url' => ['/site/about']],
+        ['label' => 'Liên hệ', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];

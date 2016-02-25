@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Detai */
 
 $this->title = $model->TenDeTai;
-$this->params['breadcrumbs'][] = ['label' => 'Detais', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Niên luận', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="detai-view">

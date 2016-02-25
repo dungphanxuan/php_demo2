@@ -2,19 +2,18 @@
 
 namespace backend\controllers;
 
-use common\models\User;
-use frontend\models\SignupForm;
-use Yii;
 use common\models\Giangvien;
-use common\models\GiangvienSearch;
+use Yii;
+use common\models\Ketqua;
+use common\models\KetquaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * GiangvienController implements the CRUD actions for Giangvien model.
+ * KetquaController implements the CRUD actions for Ketqua model.
  */
-class GiangvienController extends Controller
+class KetquaController extends Controller
 {
     /**
      * @inheritdoc
@@ -32,12 +31,12 @@ class GiangvienController extends Controller
     }
 
     /**
-     * Lists all Giangvien models.
+     * Lists all Ketqua models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new GiangvienSearch();
+        $searchModel = new KetquaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -47,7 +46,7 @@ class GiangvienController extends Controller
     }
 
     /**
-     * Displays a single Giangvien model.
+     * Displays a single Ketqua model.
      * @param integer $id
      * @return mixed
      */
@@ -59,34 +58,26 @@ class GiangvienController extends Controller
     }
 
     /**
-     * Creates a new Giangvien model.
+     * Creates a new Ketqua model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Giangvien();
-        $modelUser = new SignupForm();
+        $model = new Ketqua();
 
-        if ($modelUser->load(Yii::$app->request->post())) {
-            if ($user = $modelUser->signup()) {
-                /*Create new GiangVien*/
-                $model->attributes = Yii::$app->request->post('Giangvien');
-                $model->IDGiangVien = $user->id;
-                $model->save();
-
-                return $this->redirect(['view', 'id' => $model->IDGiangVien]);
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+                'giangvien' => Giangvien::find()->all(),
+            ]);
         }
-
-        return $this->render('create', [
-            'model' => $model,
-            'modelUser' => $modelUser,
-        ]);
     }
 
     /**
-     * Updates an existing Giangvien model.
+     * Updates an existing Ketqua model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,20 +85,19 @@ class GiangvienController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $user = User::findOne($model->IDGiangVien);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->IDGiangVien]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
-                'user' => $user,
+                'giangvien' => Giangvien::find()->all(),
             ]);
         }
     }
 
     /**
-     * Deletes an existing Giangvien model.
+     * Deletes an existing Ketqua model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -120,15 +110,15 @@ class GiangvienController extends Controller
     }
 
     /**
-     * Finds the Giangvien model based on its primary key value.
+     * Finds the Ketqua model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Giangvien the loaded model
+     * @return Ketqua the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Giangvien::findOne($id)) !== null) {
+        if (($model = Ketqua::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

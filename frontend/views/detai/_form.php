@@ -22,8 +22,6 @@ use yii\bootstrap\ActiveForm;
 
     <?= $form->field($model, 'TenDeTai')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'MoTa')->textarea(['rows' => 6]) ?>
-
     <?= $form->field($model, 'SoSVThamGia')->textInput() ?>
 
     <?= $form->field($model, 'BanMemDoAn')->textInput(['maxlength' => true]) ?>
@@ -36,9 +34,9 @@ use yii\bootstrap\ActiveForm;
 
     <?= $form->field($model, 'GiaoVien')->textInput() ?>
 
-    <?= $form->field($model, 'ThamKhao')->textarea(['rows' => 5]) ?>
+    <?= $form->field($model, 'ThamKhao')->textarea(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'MoiTruong')->textarea(['rows' => 5]) ?>
+    <?= $form->field($model, 'MoiTruong')->textarea(['maxlength' => true]) ?>
 
     <div class="form-group">
         <div class="col-sm-3"></div>

@@ -4,32 +4,28 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\LopSearch */
+/* @var $model common\models\KetquaSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="lop-search">
+<div class="ketqua-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'IDLop') ?>
+    <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'TenLop') ?>
+    <?= $form->field($model, 'dangky_id') ?>
 
-    <?= $form->field($model, 'SoSinhVien') ?>
+    <?= $form->field($model, 'giaovien_id') ?>
 
-    <?= $form->field($model, 'KhoaID') ?>
+    <?= $form->field($model, 'diem') ?>
 
-    <?= $form->field($model, 'HeDaoTaoID') ?>
+    <?= $form->field($model, 'time') ?>
 
-    <?php // echo $form->field($model, 'BacDaoTaoID') ?>
-
-    <?php // echo $form->field($model, 'DiaDiemHocID') ?>
-
-    <?php // echo $form->field($model, 'KhoaDaoTaoID') ?>
+    <?php // echo $form->field($model, 'giaovien_cham') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

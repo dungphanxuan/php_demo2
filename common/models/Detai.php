@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $IDDeTai
  * @property string $TenDeTai
+ * @property string $MoTa
  * @property integer $ChuDeID
  * @property integer $SoSVThamGia
  * @property string $BanMemDoAn
@@ -40,6 +41,7 @@ class Detai extends \yii\db\ActiveRecord
         return [
             [['ChuDeID', 'TenDeTai', 'SoSVThamGia'], 'required'],
             [['IDDeTai', 'ChuDeID', 'SoSVThamGia', 'Nam', 'HoiDongID', 'GiaoVien'], 'integer'],
+            [['MoTa'], 'string'],
             [['TenDeTai', 'BanMemDoAn', 'SourceCode', 'NhanXetChung', 'ThamKhao', 'MoiTruong'], 'string', 'max' => 255],
             [['ChuDeID'], 'exist', 'skipOnError' => true, 'targetClass' => Chude::className(), 'targetAttribute' => ['ChuDeID' => 'IDChuDe']],
         ];
@@ -53,6 +55,7 @@ class Detai extends \yii\db\ActiveRecord
         return [
             'IDDeTai' => 'ID',
             'TenDeTai' => 'Tiêu đề',
+            'MoTa' => 'Mô tả',
             'ChuDeID' => 'Chủ đề',
             'SoSVThamGia' => 'Số sinh viên tham gia',
             'BanMemDoAn' => 'Bản mềm',

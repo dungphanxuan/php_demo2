@@ -1,6 +1,10 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Dangky;
+use common\models\Detai;
+use common\models\Ketqua;
+use common\models\Sinhvien;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -12,6 +16,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use yii\web\UploadedFile;
 
 /**
  * Site controller
@@ -151,6 +156,12 @@ class SiteController extends Controller
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
+                /*Create new Student*/
+                $student = new Sinhvien();
+                $student->IDSinhVien = $user->id;
+                $student->TenSinhVien = $user->username;
+                $student->save();
+
                 if (Yii::$app->getUser()->login($user)) {
                     return $this->goHome();
                 }
@@ -209,5 +220,48 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+    /**
+     * Signs user up.
+     *
+     * @return mixed
+     */
+    public function actionSend()
+    {
+         $detaiDangky = Dangky::find()->where(['student_id' =>Yii::$app->user->id])->one();
+
+        if($detaiDangky){
+            $model = new Ketqua();
+            $model->dangky_id = $detaiDangky->id;
+
+            if (Yii::$app->request->isPost) {
+                $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+                $path=Yii::getAlias('@frontend'). '/web/uploads/';
+                $fileName = $model->dangky_id. '_'.time();
+                $model->imageFile->saveAs('uploads/' . 'file' . $fileName. '.' . $model->imageFile->extension);
+
+                $model->time = time();
+                $model->file = $path . 'file' . $fileName. '.' . $model->imageFile->extension;
+
+                if($model->save()){
+                    \Yii::$app->getSession()->setFlash('success', 'Nộp niên luận thành công');
+                    $this->goHome();
+                }else{
+                    \Yii::$app->getSession()->setFlash('error', 'Lỗi.');
+                    $this->goHome();
+                }
+
+            }
+
+            return $this->render('send', [
+                'model' => $model,
+                'detai' => Detai::findOne($detaiDangky->detai_id),
+            ]);
+        }else{
+            \Yii::$app->getSession()->setFlash('error', 'Bạn chưa đăng ký niên luận');
+            $this->goHome();
+        }
+
+
     }
 }

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\DetaiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Niên luận';
+$this->title = 'Quản lý Niên luận';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="detai-index">
