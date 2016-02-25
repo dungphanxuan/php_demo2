@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\KetquaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Ketquas';
+$this->title = 'Kết quả';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ketqua-index">

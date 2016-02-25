@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Dangky */
 
-$this->title = 'Create Dangky';
+$this->title = 'Thêm mới';
 $this->params['breadcrumbs'][] = ['label' => 'Dangkies', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

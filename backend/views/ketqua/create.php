@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Ketqua */
 
-$this->title = 'Create Ketqua';
+$this->title = 'Thêm mới';
 $this->params['breadcrumbs'][] = ['label' => 'Ketquas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'giangvien' => $giangvien
     ]) ?>
 
 </div>

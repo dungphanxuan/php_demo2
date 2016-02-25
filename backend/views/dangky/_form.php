@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
 
     <?php echo $form->field($model, 'student_id')->dropDownList(\yii\helpers\ArrayHelper::map(
-        $detai,
+        $sinhvien,
         'IDSinhVien',
         'TenSinhVien'
     ), ['prompt'=>'Chọn sinh viên ']) ?>
@@ -33,12 +33,17 @@ use yii\widgets\ActiveForm;
         'TenGiangVien'
     ), ['prompt'=>'Chọn giảng viên ']) ?>
 
+    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+
+    <?php echo $form->field($model, 'giaovien_hd')->dropDownList(\yii\helpers\ArrayHelper::map(
+        $giangvien,
+        'IDGiangVien',
+        'TenGiangVien'
+    ), ['prompt'=>'Chọn giảng viên hướng dẫn ']) ?>
+
+    <?= $form->field($model, 'status')->checkbox() ?>
 
     <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

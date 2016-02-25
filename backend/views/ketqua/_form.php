@@ -21,15 +21,15 @@ use yii\widgets\ActiveForm;
         'TenGiangVien'
     ), ['prompt'=>'Chọn giảng viên ']) ?>
 
-    <?= $form->field($model, 'diem')->textInput() ?>
-
-    <?= $form->field($model, 'time')->textInput() ?>
-
     <?php echo $form->field($model, 'giaovien_cham')->dropDownList(\yii\helpers\ArrayHelper::map(
         $giangvien,
         'IDGiangVien',
         'TenGiangVien'
     ), ['prompt'=>'Chọn giảng viên ']) ?>
+
+    <?= $form->field($model, 'time')->textInput() ?>
+
+    <?= $form->field($model, 'diem')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Thêm mới' : 'Cập nhật', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

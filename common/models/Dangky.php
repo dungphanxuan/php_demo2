@@ -32,8 +32,9 @@ class Dangky extends \yii\db\ActiveRecord
     {
         return [
             [['student_id', 'detai_id'], 'required'],
-            [['student_id', 'detai_id', 'teacher_id', 'created_at', 'status'], 'integer'],
+            [['student_id', 'detai_id', 'teacher_id', 'giaovien_hd', 'status'], 'integer'],
             [['description'], 'string', 'max' => 255],
+            [['created_at'], 'default', 'value' => null],
         ];
     }
 
@@ -50,6 +51,7 @@ class Dangky extends \yii\db\ActiveRecord
             'created_at' => 'Ngày đăng ký',
             'status' => 'Tình trạng',
             'description' => 'Mô tả',
+            'giaovien_hd' => 'Giáo viên hướng dẫn',
         ];
     }
 }
